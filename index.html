@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nexzen Ventures — Download</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --rose-dark: #8B1A4A;
+            --rose: #D44A7A;
+            --rose-light: #F4A7C4;
+            --rose-blush: #FFD9E6;
+            --gold: #D4A843;
+            --gold-light: #F7E7CE;
+            --gold-dark: #B8860B;
+            --lavender: #D8B4FE;
+            --dark-bg: #1A0A12;
+            --dark-card: #2D1424;
+            --text-light: #FFF0F5;
+            --text-muted: #D8A7C0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--dark-bg);
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(212,74,122,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(212,168,67,0.1) 0%, transparent 50%);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* Floating orbs */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 0;
+            animation: floatOrb 8s ease-in-out infinite;
+        }
+        .bg-orb-1 {
+            width: 300px; height: 300px;
+            background: var(--rose);
+            top: -80px; left: -100px;
+            animation-delay: 0s;
+        }
+        .bg-orb-2 {
+            width: 250px; height: 250px;
+            background: var(--gold);
+            bottom: -60px; right: -80px;
+            animation-delay: 3s;
+        }
+        .bg-orb-3 {
+            width: 180px; height: 180px;
+            background: var(--rose-light);
+            top: 50%; left: 60%;
+            animation-delay: 6s;
+        }
+
+        @keyframes floatOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(25px, -15px) scale(1.05); }
+            50% { transform: translate(-10px, 25px) scale(0.95); }
+            75% { transform: translate(15px, 10px) scale(1.02); }
+        }
+
+        .download-card {
+            position: relative;
+            z-index: 10;
+            background: linear-gradient(145deg, rgba(45,20,36,0.9), rgba(26,10,18,0.95));
+            border: 1px solid rgba(212,168,67,0.2);
+            border-radius: 28px;
+            padding: 40px 32px 36px;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(139,26,74,0.3), 0 0 40px rgba(212,168,67,0.08);
+            animation: cardAppear 1s ease forwards;
+        }
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* Crown logo ring */
+        .logo-ring {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--rose-dark), var(--gold-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            position: relative;
+            box-shadow: 0 0 40px rgba(212,74,122,0.2);
+        }
+        .logo-ring::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: conic-gradient(transparent, var(--rose), var(--gold), transparent);
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #fff calc(100% - 1px));
+            animation: spinRing 3s linear infinite;
+        }
+        @keyframes spinRing {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .logo-ring span {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+            font-size: 34px;
+            color: var(--white);
+            z-index: 2;
+            text-shadow: 0 0 20px rgba(212,168,67,0.3);
+        }
+        .logo-ring .crown-mini {
+            font-size: 12px;
+            position: absolute;
+            top: 10px;
+            right: 14px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--gold-light), var(--rose-light), var(--gold-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 4px;
+        }
+        .card-subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 15px;
+            color: var(--rose-light);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 0 auto 18px;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 13px;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            padding: 0 10px;
+        }
+        .card-desc i {
+            color: var(--rose-light);
+            margin: 0 3px;
+        }
+
+        /* Feature pills */
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+        .feature-pill {
+            background: rgba(255,240,245,0.05);
+            border: 1px solid rgba(212,168,67,0.12);
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 11px;
+            color: var(--rose-light);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .feature-pill i { font-size: 12px; color: var(--gold); }
+
+        /* Download button */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, var(--rose), var(--gold-dark));
+            border: none;
+            border-radius: 18px;
+            color: var(--white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(212,74,122,0.3);
+            text-decoration: none;
+        }
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(212,74,122,0.4);
+        }
+        .btn-download:active {
+            transform: scale(0.97);
+        }
+        .btn-download i {
+            font-size: 22px;
+            animation: bounceDown 2s ease-in-out infinite;
+        }
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(4px); }
+        }
+        .btn-download .btn-sub {
+            display: block;
+            font-size: 10px;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* Size badge */
+        .size-badge {
+            display: inline-block;
+            background: rgba(255,240,245,0.06);
+            border: 1px solid rgba(255,240,245,0.08);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 14px;
+        }
+
+        /* Trust badges */
+        .trust-row {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+        .trust-item i { color: var(--success); font-size: 13px; }
+
+        /* Loading overlay for download */
+        .download-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(26,10,18,0.85);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .download-overlay.active { display: flex; }
+        .download-overlay .spinner {
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            border: 3px solid rgba(212,168,67,0.1);
+            border-top: 3px solid var(--gold);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .download-overlay p {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+        }
+        .download-overlay small {
+            color: var(--text-muted);
+            font-size: 12px;
+        }
+
+        /* Notification */
+        .notif-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(145deg, #2D1424, #1A0A12);
+            border: 1px solid var(--gold);
+            border-radius: 16px;
+            padding: 14px 24px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            animation: slideUp 0.5s ease;
+            white-space: nowrap;
+        }
+        .notif-toast.active { display: flex; }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+        .notif-toast .notif-icon { font-size: 24px; }
+        .notif-toast .notif-text { font-size: 13px; font-weight: 600; color: var(--gold-light); }
+
+        @media (max-width: 400px) {
+            .download-card { padding: 28px 20px 30px; }
+            .card-title { font-size: 26px; }
+            .btn-download { font-size: 16px; padding: 16px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Orbs -->
+    <div class="bg-orb bg-orb-1"></div>
+    <div class="bg-orb bg-orb-2"></div>
+    <div class="bg-orb bg-orb-3"></div>
+
+    <!-- Download Overlay -->
+    <div class="download-overlay" id="downloadOverlay">
+        <div class="spinner"></div>
+        <p>🕊️ Preparing your app...</p>
+        <small>Nexzen Ventures — Luxury Investment</small>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="notif-toast" id="notifToast">
+        <span class="notif-icon">📲</span>
+        <span class="notif-text">Download started!</span>
+    </div>
+
+    <!-- Main Card -->
+    <div class="download-card">
+        <div class="logo-ring">
+            <span>N<span class="crown-mini">👑</span></span>
+        </div>
+
+        <div class="card-title">Nexzen Ventures</div>
+        <div class="card-subtitle">✦ Luxury Investments ✦</div>
+        <div class="divider"></div>
+
+        <p class="card-desc">
+            <i class="fas fa-heart"></i> Invest smart · Earn daily · Live luxurious <i class="fas fa-heart"></i>
+            <br>
+            Get the official app and start your investment journey.
+        </p>
+
+        <div class="features">
+            <span class="feature-pill"><i class="fas fa-shield-alt"></i> Secure</span>
+            <span class="feature-pill"><i class="fas fa-bolt"></i> Fast</span>
+            <span class="feature-pill"><i class="fas fa-gem"></i> Premium</span>
+        </div>
+
+        <!-- Download Button -->
+        <a href="#" id="downloadBtn" class="btn-download">
+            <i class="fas fa-download"></i>
+            <span>
+                Download Now
+                <span class="btn-sub">Nexzen Ventures APK</span>
+            </span>
+        </a>
+
+        <div class="size-badge">
+            <i class="fas fa-file-archive"></i> ~4.5 MB · v1.0.0
+        </div>
+
+        <div class="trust-row">
+            <span class="trust-item"><i class="fas fa-check-circle"></i> 100% Safe</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> No Virus</span>
+            <span class="trust-item"><i class="fas fa-check-circle"></i> Official</span>
+        </div>
+    </div>
+
+    <script>
+        // ===== IMPORTANT: Replace this URL with your actual APK file URL =====
+        const APK_DOWNLOAD_URL = "https://your-server.com/downloads/nexzen-ventures-v1.0.0.apk";
+        // Example: "https://example.com/app.apk"
+        // Example: "https://www.dropbox.com/s/xxxx/nexzen.apk?dl=1"
+
+        const downloadBtn = document.getElementById('downloadBtn');
+        const overlay = document.getElementById('downloadOverlay');
+        const toast = document.getElementById('notifToast');
+
+        downloadBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Show loading overlay
+            overlay.classList.add('active');
+
+            // Show toast notification
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 4000);
+
+            // Simulate slight delay for UX, then trigger download
+            setTimeout(() => {
+                // Create an invisible anchor and trigger download
+                const a = document.createElement('a');
+                a.href = APK_DOWNLOAD_URL;
+                a.download = 'Nexzen-Ventures-v1.0.0.apk';
+                a.style.display = 'none';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+
+                // Hide overlay after download starts
+                setTimeout(() => {
+                    overlay.classList.remove('active');
+                }, 1500);
+            }, 1500);
+        });
+
+        // ===== ALTERNATIVE: If file is hosted on same server, use this =====
+        // Just change APK_DOWNLOAD_URL to relative path:
+        // const APK_DOWNLOAD_URL = "nexzen-ventures-v1.0.0.apk";
+    </script>
+</body>
+</html>
