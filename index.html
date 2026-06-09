@@ -393,46 +393,41 @@
     </div>
 
     <script>
-        // ===== IMPORTANT: Replace this URL with your actual APK file URL =====
-        const APK_DOWNLOAD_URL = "https://your-server.com/downloads/nexzen-ventures-v1.0.0.apk";
-        // Example: "https://example.com/app.apk"
-        // Example: "https://www.dropbox.com/s/xxxx/nexzen.apk?dl=1"
+        <script>
+    const APK_DOWNLOAD_URL = "https://nexzen-ventures.github.io/App/app.apk";
 
-        const downloadBtn = document.getElementById('downloadBtn');
-        const overlay = document.getElementById('downloadOverlay');
-        const toast = document.getElementById('notifToast');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const overlay = document.getElementById('downloadOverlay');
+    const toast = document.getElementById('notifToast');
 
-        downloadBtn.addEventListener('click', function(e) {
-            e.preventDefault();
+    downloadBtn.addEventListener('click', function(e) {
+        e.preventDefault();
 
-            // Show loading overlay
-            overlay.classList.add('active');
+        // Show loading overlay
+        overlay.classList.add('active');
 
-            // Show toast notification
-            toast.classList.add('active');
-            setTimeout(() => toast.classList.remove('active'), 4000);
+        // Show toast notification
+        toast.classList.add('active');
+        setTimeout(() => {
+            toast.classList.remove('active');
+        }, 4000);
 
-            // Simulate slight delay for UX, then trigger download
+        // Start download
+        setTimeout(() => {
+
+            // Open APK directly
+            window.location.href = APK_DOWNLOAD_URL;
+
+            // Hide overlay
             setTimeout(() => {
-                // Create an invisible anchor and trigger download
-                const a = document.createElement('a');
-                a.href = APK_DOWNLOAD_URL;
-                a.download = 'Nexzen-Ventures-v1.0.0.apk';
-                a.style.display = 'none';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
+                overlay.classList.remove('active');
+            }, 1000);
 
-                // Hide overlay after download starts
-                setTimeout(() => {
-                    overlay.classList.remove('active');
-                }, 1500);
-            }, 1500);
-        });
+        }, 1000);
+    });
+</script>
 
-        // ===== ALTERNATIVE: If file is hosted on same server, use this =====
-        // Just change APK_DOWNLOAD_URL to relative path:
-        // const APK_DOWNLOAD_URL = "nexzen-ventures-v1.0.0.apk";
+ 
     </script>
 </body>
 </html>
