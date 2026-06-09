@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* Floating orbs */
         .bg-orb {
             position: fixed;
             border-radius: 50%;
@@ -92,7 +91,6 @@
             100% { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* Crown logo ring */
         .logo-ring {
             width: 100px;
             height: 100px;
@@ -170,7 +168,6 @@
             margin: 0 3px;
         }
 
-        /* Feature pills */
         .features {
             display: flex;
             justify-content: center;
@@ -191,7 +188,6 @@
         }
         .feature-pill i { font-size: 12px; color: var(--gold); }
 
-        /* Download button */
         .btn-download {
             display: inline-flex;
             align-items: center;
@@ -236,7 +232,6 @@
             margin-top: 2px;
         }
 
-        /* Size badge */
         .size-badge {
             display: inline-block;
             background: rgba(255,240,245,0.06);
@@ -248,7 +243,6 @@
             margin-top: 14px;
         }
 
-        /* Trust badges */
         .trust-row {
             display: flex;
             justify-content: center;
@@ -265,7 +259,6 @@
         }
         .trust-item i { color: var(--success); font-size: 13px; }
 
-        /* Loading overlay for download */
         .download-overlay {
             display: none;
             position: fixed;
@@ -297,7 +290,6 @@
             font-size: 12px;
         }
 
-        /* Notification */
         .notif-toast {
             position: fixed;
             bottom: 30px;
@@ -332,25 +324,21 @@
 </head>
 <body>
 
-    <!-- Background Orbs -->
     <div class="bg-orb bg-orb-1"></div>
     <div class="bg-orb bg-orb-2"></div>
     <div class="bg-orb bg-orb-3"></div>
 
-    <!-- Download Overlay -->
     <div class="download-overlay" id="downloadOverlay">
         <div class="spinner"></div>
         <p>🕊️ Preparing your app...</p>
         <small>Nexzen Ventures — Luxury Investment</small>
     </div>
 
-    <!-- Toast Notification -->
     <div class="notif-toast" id="notifToast">
         <span class="notif-icon">📲</span>
         <span class="notif-text">Download started!</span>
     </div>
 
-    <!-- Main Card -->
     <div class="download-card">
         <div class="logo-ring">
             <span>N<span class="crown-mini">👑</span></span>
@@ -372,8 +360,11 @@
             <span class="feature-pill"><i class="fas fa-gem"></i> Premium</span>
         </div>
 
-        <!-- Download Button -->
-        <a href="#" id="downloadBtn" class="btn-download">
+        <!-- FIXED: Direct download link with download attribute -->
+        <a href="https://nexzen-ventures.github.io/App/app.apk" 
+           id="downloadBtn" 
+           class="btn-download"
+           download="Nexzen-Ventures-v1.0.0.apk">
             <i class="fas fa-download"></i>
             <span>
                 Download Now
@@ -393,41 +384,23 @@
     </div>
 
     <script>
-        <script>
-    const APK_DOWNLOAD_URL = "https://nexzen-ventures.github.io/App/app.apk";
+        const downloadBtn = document.getElementById('downloadBtn');
+        const overlay = document.getElementById('downloadOverlay');
+        const toast = document.getElementById('notifToast');
 
-    const downloadBtn = document.getElementById('downloadBtn');
-    const overlay = document.getElementById('downloadOverlay');
-    const toast = document.getElementById('notifToast');
+        downloadBtn.addEventListener('click', function(e) {
+            // Don't prevent default — let browser handle the download
+            // Sirf overlay aur toast show karo
 
-    downloadBtn.addEventListener('click', function(e) {
-        e.preventDefault();
+            overlay.classList.add('active');
 
-        // Show loading overlay
-        overlay.classList.add('active');
+            toast.classList.add('active');
+            setTimeout(() => toast.classList.remove('active'), 4000);
 
-        // Show toast notification
-        toast.classList.add('active');
-        setTimeout(() => {
-            toast.classList.remove('active');
-        }, 4000);
-
-        // Start download
-        setTimeout(() => {
-
-            // Open APK directly
-            window.location.href = APK_DOWNLOAD_URL;
-
-            // Hide overlay
             setTimeout(() => {
                 overlay.classList.remove('active');
-            }, 1000);
-
-        }, 1000);
-    });
-</script>
-
- 
+            }, 3000);
+        });
     </script>
 </body>
 </html>
